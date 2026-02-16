@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Premium Electronics</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" >
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item brand" href="#">
+                <i class="fas fa-shopping-bag"></i>
+                <span style="margin-left: 10px;">TechStore</span>
+            </a>
+        </div>
+
+          <a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false" @click="toggleMenu" :class="{ 'is-active': isMenuActive }">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+
+        <div class="navbar-menu" :class="{ 'is-active': isMenuActive }">
+            <div class="navbar-start">
+                <a class="navbar-item" href="#products">Products</a>
+                <a class="navbar-item" href="#about">About</a>
+                <a class="navbar-item" href="#contact">Contact</a>
+            </div>
+            <!--Add a button-->
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <button class="button is-info is-light" onclick="toggleCart()">
+                            <span class="icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </span>
+                            <span>Cart</span>
+                            <span class="cart-count" id="cartCount" style="display:none;">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      
+
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero hero-gradient is-medium">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <h1 class="title is-1 has-text-white">
+                        Welcome to TechStore <i class="fa-solid fa-clock"></i>
+                    </h1>
+                    <p class="subtitle is-4 has-text-white-bis">
+                        Discover the latest in premium electronics and gadgets
+                    </p>
+                    <button class="button is-large is-primary" onclick="scrollToProducts()">
+                        <span class="icon">
+                            <i class="fas fa-arrow-down"></i>
+                        </span>
+                        <span>Shop Now</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Categories -->
+        <section class="section">
+            <div class="container">
+                <h2 class="title is-2">Featured Categories</h2>
+                <div class="columns">
+                    <div class="column">
+                        <div class="box has-background-info-light has-text-centered">
+                            <p class="icon is-large">
+                                <i class="fas fa-laptop fa-3x has-text-info"></i>
+                            </p>
+                            <p class="title is-5">Laptops</p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="box has-background-success-light has-text-centered">
+                            <p class="icon is-large">
+                                <i class="fas fa-mobile-alt fa-3x has-text-success"></i>
+                            </p>
+                            <p class="title is-5">Smartphones</p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="box has-background-warning-light has-text-centered">
+                            <p class="icon is-large">
+                                <i class="fas fa-headphones fa-3x has-text-warning"></i>
+                            </p>
+                            <p class="title is-5">Audio</p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="box has-background-danger-light has-text-centered">
+                            <p class="icon is-large">
+                                <i class="fas fa-camera fa-3x has-text-danger"></i>
+                            </p>
+                            <p class="title is-5">Cameras</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="section" id="products">
+            <div class="container">
+                <h2 class="title is-2">Our Products</h2>
+                <div class="columns is-multiline" id="productGrid">
+                    <!-- Products will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section has-background-light" id="about">
+            <div class="container">
+                <h2 class="title is-2">About TechStore</h2>
+                <div class="columns">
+                    <div class="column">
+                        <p class="block">
+                            TechStore is your premier destination for cutting-edge technology and premium electronics. We pride ourselves on offering only the highest quality products from the world's leading manufacturers.
+                        </p>
+                        <p class="block">
+                            With over 10 years of experience in the tech industry, we're committed to providing exceptional customer service and competitive prices.
+                        </p>
+                    </div>
+                    <div class="column">
+                        <div class="box">
+                            <h3 class="title is-4">Why Choose Us?</h3>
+                            <ul style="margin-left: 20px;">
+                                <li><i class="fas fa-check has-text-success"></i> Authentic Products</li>
+                                <li><i class="fas fa-check has-text-success"></i> Fast Shipping</li>
+                                <li><i class="fas fa-check has-text-success"></i> 30-Day Returns</li>
+                                <li><i class="fas fa-check has-text-success"></i> Expert Support</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer has-background-dark has-text-white">
+        <div class="content">
+            <div class="columns">
+                <div class="column">
+                    <h4 class="title is-5 has-text-white">Customer Service</h4>
+                    <ul style="list-style: none;">
+                        <li><a href="#" class="has-text-grey-light">Contact Us</a></li>
+                        <li><a href="#" class="has-text-grey-light">Shipping Info</a></li>
+                        <li><a href="#" class="has-text-grey-light">Returns</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h4 class="title is-5 has-text-white">About</h4>
+                    <ul style="list-style: none;">
+                        <li><a href="#" class="has-text-grey-light">About Us</a></li>
+                        <li><a href="#" class="has-text-grey-light">Careers</a></li>
+                        <li><a href="#" class="has-text-grey-light">Press</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h4 class="title is-5 has-text-white">Legal</h4>
+                    <ul style="list-style: none;">
+                        <li><a href="#" class="has-text-grey-light">Privacy Policy</a></li>
+                        <li><a href="#" class="has-text-grey-light">Terms of Service</a></li>
+                        <li><a href="#" class="has-text-grey-light">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div class="column has-text-right">
+                    <p class="has-text-grey-light">Follow us on social media:</p>
+                    <p>
+                        <a href="#" class="has-text-grey-light"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="has-text-grey-light" style="margin-left: 10px;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="has-text-grey-light" style="margin-left: 10px;"><i class="fab fa-instagram"></i></a>
+                    </p>
+                </div>
+            </div>
+            <hr class="has-background-grey-dark">
+            <p class="has-text-centered has-text-grey-light">
+                &copy; 2026 TechStore. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-background" onclick="toggleCart()"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Shopping Cart</p>
+                <button class="delete" onclick="toggleCart()"></button>
+            </header>
+            <section class="modal-card-body">
+                <div id="cartItems">
+                    <p class="has-text-grey-light has-text-centered">Your cart is empty</p>
+                </div>
+            </section>
+            <footer class="modal-card-foot">
+                <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <p class="heading">Total</p>
+                        <p class="title is-5" id="cartTotal">$0.00</p>
+                    </div>
+                    <div>
+                        <button class="button" onclick="toggleCart()">Cancel</button>
+                        <button class="button is-success">Checkout</button>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.5.28/dist/vue.global.min.js"></script>  
+    <script>
+        Vue.createApp({
+            setup(){
+                const isMenuActive = Vue.ref(false);
+                const toggleMenu = () => {
+                    isMenuActive.value = !isMenuActive.value;
+                };
+                return { isMenuActive, toggleMenu };
+            }
+        }).mount('body');
+    </script>
+
+</body>
+</html>
