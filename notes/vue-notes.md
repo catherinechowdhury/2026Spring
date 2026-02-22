@@ -3,6 +3,7 @@
 _Date: February 22, 2026_
 
 ## What is Vue
+
 Frontend Architecture: Vue.js is a JS framework for building user interfaces.
 - Buttons updated instantly
 - Forms react dynamically
@@ -11,6 +12,7 @@ Frontend Architecture: Vue.js is a JS framework for building user interfaces.
 User data ---> directly to UI
 
 ## How it works
+
 Vue FrontEnd ---> Express API ---> Database
 
 *Template Interpolation*
@@ -21,6 +23,7 @@ Shorthand for directives examples:
 - `@click` = v-on click
 
 ## Creating a Script
+
 1. Load Vue via a CDN in its own script container `<script></script>`
 
     <a style="pointer-events:none"> https://cdn.jsdelivr.net/npm/vue@3.5.28/dist/vue.global.min.js </a>
@@ -31,6 +34,7 @@ Shorthand for directives examples:
     - OR: `Vue.createApp({ })`
 
 3. Create a VUE application instance
+
     NOTE: For each separate reactive areas, you want two independent reactive sections on the page (or two createApp with its own reactive state, methods, and DOM tracking)
     - instance: `createApp({})`
     - OR: `Vue.createApp({})`
@@ -56,15 +60,18 @@ Inside this object, you define: data, methods, computed properties, lifecycle ho
     - methods can also take parameters and call methods from other methods
 
 6. Mounting the App
+
     Takes the app definition and attaches it to a real DOM element. Before mount(), Vue app is just a configuration object sitting in memory.
     - In the parameters, `mount()` finds the DOM element
     - Structure: `.mount(SELECTOR)`
 
 
 ## Directives
+
 These are special attributes that start with `v-`
 
 1. `v-if`, `v-else`,`v-else-if`
+
     Conditional Rendering
 
     - EX: `<p v-if="isLoggedIn">Welcome back!</p>`
@@ -72,6 +79,7 @@ These are special attributes that start with `v-`
     - What does it mean that the element is completely removed from DOM?
 
 2. `v-for`
+
     Used for looping arrays
 
     - EX: `<li v-for="item in items" :key="item.id">{{ item.name }}</li>`
@@ -79,6 +87,7 @@ These are special attributes that start with `v-`
     - Array example: `items: [{ id: 1, name: "Run" },{ id: 2, name: "Lift" }]`
 
 3. `v-model`
+
     Two-way data binding ( input value <---> reactive state)
 
     - EX: `<input v-model="username" />`
