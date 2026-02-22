@@ -52,9 +52,11 @@ After everything is done, you can safely delete the local branch
 This creates a new commit that undoes an earlier one.
 
 Find the commit hash:
-git log --oneline
+`git log --oneline`
+
 Revert that commit:
-git revert <commit-hash>
+`git revert`
+
 If it opens an editor for the message, save & close, then:
 git push
 Use this when the commits are already on GitHub or others may have pulled them.
