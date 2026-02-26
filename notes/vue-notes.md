@@ -91,3 +91,7 @@ These are special attributes that start with `v-`
     Two-way data binding ( input value <---> reactive state)
 
     - EX: `<input v-model="username" />`
+    - EX: v-model.trim: erases whitespace surrounding the input
+
+4. `v-on`
+    - EX: `v-on:submit.prevent`
