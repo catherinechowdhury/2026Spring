@@ -1,11 +1,18 @@
 <script setup lang="ts">
 import { useProductStore } from '@/stores/products'
-
+import SideBar from '@/components/SideBar.vue'
+import ShoppingCart from '@/components/ShoppingCart.vue'
+import { useCartStore } from '@/stores/cart'
 // useProductStore is a function that returns the products store array which contains the products data and any actions or getters defined in that store
 
 //products refers to the products array in the products store, which is a reactive reference to the array of products from the JSON file. This means that any changes to this array will automatically update any components that use this store.
 
 const products = useProductStore()
+const cart = useCartStore()
+
+function addToCart(productId: number) {
+  cart.addItems(productId)
+}
 </script>
 
 <template>
@@ -16,17 +23,32 @@ const products = useProductStore()
 
       <img :src="product.thumbnail" alt="Product Image" class="image is-4by3" />
 
-      <button class="button is-primary is-small add-button">Add to Cart</button>
-      <b>{{ product.title }}</b>
+      <h4 class="title is-6">{{ product.title }}</h4>
+      <h6 class="subtitle is-6">Brand: {{ product.brand }} | Category: {{ product.category }}</h6>
       {{ product.description }}
-      <div class="price">{{ product.price }}</div>
+
+      <button class="button is-primary is-small add-button" @click="addToCart(product.id)">
+        Add to Cart
+      </button>
+
+      <div>
+        <span class="price">${{ product.price }}</span>
+      </div>
     </div>
   </div>
+
+  <SideBar :width="300">
+    <ShoppingCart />
+  </SideBar>
 </template>
 
 <style scoped>
 .add-button {
   float: right;
   margin-top: 0.5em;
+}
+.price {
+  font-weight: bold;
+  color: #3273dc;
 }
 </style>
