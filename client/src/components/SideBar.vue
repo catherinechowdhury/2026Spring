@@ -6,10 +6,7 @@ const props = defineProps<{
 
 <template>
   <div class="side-bar" :class="{ 'is-active': false }" :style="{ width: props.width + 'px' }">
-    <div class="temp">
-      <h2 class="title is-4">Shopping Cart</h2>
-      <p>Your cart is currently empty.</p>
-    </div>
+    <slot />
   </div>
 </template>
 
@@ -17,12 +14,11 @@ const props = defineProps<{
 .side-bar {
   width: 250px;
   position: fixed;
-  top: 0;
+  top: 56px;
   right: 0;
-  height: 100%;
+  height: calc(100% - 56px);
   border-left: 1px solid #ddd;
   box-shadow: 5px 0 25px rgba(0, 0, 0, 0.2);
-
   transform: translateX(90%);
   transition: transform 0.3s ease-in-out;
 }

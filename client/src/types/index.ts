@@ -1,7 +1,6 @@
 export type ProductReview = {
   rating: number
   comment: string
-
   date: string
   reviewerName: string
   reviewerEmail: string
@@ -14,10 +13,8 @@ export type Product = {
   category: string
   price: number
   tags: string[]
-  rating: number
+  brand?: string
   reviews: ProductReview[]
-  stock: number
   images: string[]
   thumbnail: string
-  brand?: string
 }
