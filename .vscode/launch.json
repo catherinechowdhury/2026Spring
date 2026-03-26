@@ -2,6 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "Practice",
+      "request": "launch",
+      "mainClass": "Practice",
+      "projectName": "2026Spring_ccf16670"
+    },
+    {
       "name": "Backend: Debug Server",
       "type": "node",
       "request": "launch",
