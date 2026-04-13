@@ -1,19 +1,14 @@
 import { defineStore } from 'pinia'
-import data from '../data/products.json'
-
-//import type { Product } from '../types'
-
+import type { Product } from '../../../server/types'
 import { ref } from 'vue'
-import type { Product } from '@/types'
-
-// export means that this store can be imported and used in other files
+import { api } from '../services/myFetch'
 
 export const useProductsStore = defineStore('products', () => {
-  // data.products is the array of products from the JSON file where data means the imported JSON file and products is the key in that JSON file that contains the array of products
+  api('users').then((data) => {
+    console.log(data)
+  })
 
-  // products is a reactive reference to the array of products, which means that any changes to this array will automatically update any components that use this store
-
-  const products = ref<Product[]>(data.products)
+  const products = ref<Product[]>([])
 
   return { products }
 })

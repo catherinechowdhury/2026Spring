@@ -1,16 +1,45 @@
+// {
+//   "compilerOptions": {
+//     "target": "ES2020",
+//     "module": "CommonJS",
+//     "moduleResolution": "node",
+//     "outDir": "dist",
+//     "rootDir": "./server",
+//     "strict": true,
+//     "esModuleInterop": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "skipLibCheck": true,
+//     "resolveJsonModule": true
+//   },
+//   "include": ["server/**/*.ts"],
+//   "exclude": ["node_modules", "dist"]
+// }
+
 {
   "compilerOptions": {
     "target": "ES2020",
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "outDir": "dist",
+    "module": "commonjs",
+    "lib": ["ES2020"],
+    "outDir": "./dist",
     "rootDir": "./server",
     "strict": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
   },
-  "include": ["server/**/*.ts"],
+  "include": ["server/**/*"],
   "exclude": ["node_modules", "dist"]
 }

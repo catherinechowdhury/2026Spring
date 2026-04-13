@@ -1,13 +1,23 @@
 import express from "express";
 import usersController from "./controllers/users";
+import { DataEnvelope } from "./types";
 
 const PORT = 3000;
 const SERVER = "localhost";
 
 const app = express();
 
-app.use(express.json()); // Middleware to parse JSON request bodies
+///////// Middleware
+app
+  .use((_req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*"); // Allow requests from any origin
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE"); // Allow specific HTTP methods
+    res.setHeader("Access-Control-Allow-Headers", "*"); // Allow specific headers
+    next();
+  })
+  .use(express.json()); // Middleware to parse JSON request bodies
 
+///////// Routes
 app
   .get("/", (_req, res) => {
     res.send("Hello World!");
@@ -15,7 +25,27 @@ app
   .get("/suny", (_req, res) => {
     res.send("The best plan of my life!");
   })
-  .use("/users", usersController);
+  .use("/api/v1/users", usersController);
+
+//////// Error handling
+app.use(
+  (
+    err: Error,
+    _req: express.Request,
+    res: express.Response,
+    _next: express.NextFunction,
+  ) => {
+    console.error(err);
+
+    const response: DataEnvelope<null> = {
+      data: null,
+      isSuccess: false,
+      message: err.message ?? "An error occurred",
+    };
+
+    res.status((err as any).status ?? 500).send(response);
+  },
+);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://${SERVER}:${PORT}`);
@@ -29,6 +59,10 @@ console.log("Listening for requests...");
   2. Pipeline
   3. Promises
   4. Async/Await
+
+  Riddle: 60 minutes to get over the bridge
+  Four People: 5, 10, 20, 25 minutes to cross
+  Only two people can cross at a time, and they must move at the slower person's pace. How do they all get across in 60 minutes?
 */
 
 /* 
