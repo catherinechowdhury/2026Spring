@@ -4,6 +4,7 @@ import { ref } from 'vue'
 import { api } from '../services/myFetch'
 
 export const useProductsStore = defineStore('products', () => {
+  // Example of using the api function to fetch data from the server
   api('users').then((data) => {
     console.log(data)
   })
