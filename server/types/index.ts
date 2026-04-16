@@ -1,7 +1,4 @@
-/* B"H
- */
-
-export { DataEnvelope, DataListEnvelope } from "./dataEnvelopes";
+export type { DataEnvelope, DataListEnvelope } from "./dataEnvelopes";
 
 export type ProductReview = {
   rating: number;
@@ -22,6 +19,11 @@ export type Product = {
   reviews: ProductReview[];
   images: string[];
   thumbnail: string;
+};
+
+export type CartItem = {
+  product: Product;
+  quantity: number;
 };
 
 export type UserRole = "admin" | "moderator" | "user";
